@@ -5,11 +5,11 @@ export {
   getFonts,
   registerFont,
   setDefaultFont,
-} from './registration';
+} from './registry';
 export type * from './types';
 export { decodeFontFamily, encodeFontFamily } from './utils';
 
 import { BUILT_IN_FONTS } from './built-in';
-import { registerFont } from './registration';
+import { registerFont } from './registry';
 
 BUILT_IN_FONTS.forEach(registerFont);

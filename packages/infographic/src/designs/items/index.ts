@@ -1,4 +1,4 @@
 export * from './DoneList';
-export * from './registration';
+export * from './registry';
 export type * from './SimpleItem';
 export type * from './types';

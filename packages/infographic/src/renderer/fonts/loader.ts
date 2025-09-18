@@ -1,5 +1,5 @@
 import { join } from '../../utils';
-import { getFont, getFonts } from './registration';
+import { getFont, getFonts } from './registry';
 import { normalizeFontWeightName } from './utils';
 
 export function getFontURLs(font: string): string[] {

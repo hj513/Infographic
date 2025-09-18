@@ -4,7 +4,7 @@ import {
   loadRemoteResource,
   loadSVGResource,
 } from './loaders';
-import { getCustomResourceLoader } from './registration';
+import { getCustomResourceLoader } from './registry';
 import type { Resource, ResourceConfig } from './types';
 import { getResourceId, parseResourceConfig } from './utils';
 

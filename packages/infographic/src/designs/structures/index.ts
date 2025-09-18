@@ -1,3 +1,3 @@
 export * from './list-column';
-export * from './registration';
+export * from './registry';
 export type * from './types';
