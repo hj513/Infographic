@@ -289,8 +289,22 @@ const BUILT_IN_TEMPLATES: Record<string, TemplateOptions> = {
       items: [{ type: 'simple-horizontal-arrow' }],
     },
   },
+  'compare-swot': {
+    design: {
+      title: 'default',
+      structure: {
+        type: 'compare-hierarchy-row',
+        itemGap: 32,
+        showColumnBackground: true,
+        columnBackgroundAlpha: 0.08,
+      },
+      items: [
+        { type: 'letter-card', showBottomShade: false },
+        { type: 'bullet-text' },
+      ],
+    },
+  },
 };
-
 Object.entries(BUILT_IN_TEMPLATES).forEach(([name, options]) => {
   registerTemplate(name, options);
 });

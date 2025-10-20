@@ -142,3 +142,46 @@ export const COMPARE_DATA: Data = {
     },
   ],
 };
+
+export const SWOT_DATA: Data = {
+  title: 'SWOT分析',
+  desc: '通过对比分析，找出差距，明确改进方向',
+  items: [
+    {
+      // S
+      label: 'Strengths',
+      children: [
+        { label: '强大的品牌影响力强大的品牌影响力' },
+        { label: '丰富的产品线和服务' },
+      ],
+    },
+    {
+      // W
+      label: 'Weaknesses',
+      children: [
+        { label: '市场份额有限' },
+        { label: '品牌知名度较低' },
+        { label: '技术创新能力不足' },
+      ],
+    },
+    {
+      // O
+      label: 'Opportunities',
+      children: [
+        { label: '新兴市场的增长机会' },
+        { label: '数字化转型的趋势' },
+        { label: '战略合作伙伴关系的建立' },
+      ],
+    },
+    {
+      // T
+      label: 'Threats',
+      children: [
+        { label: '激烈的市场竞争' },
+        { label: '快速变化的消费者需求' },
+        { label: '经济环境的不确定性' },
+        { label: '技术进步带来的挑战' },
+      ],
+    },
+  ],
+};

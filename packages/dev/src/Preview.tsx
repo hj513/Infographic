@@ -2,7 +2,7 @@ import { getTemplates } from '@antv/infographic';
 import { Checkbox, Flex, Form, Select } from 'antd';
 import { useEffect, useState } from 'react';
 import { Infographic } from './Infographic';
-import { COMPARE_DATA, HIERARCHY_DATA, LIST_DATA } from './data';
+import { COMPARE_DATA, HIERARCHY_DATA, LIST_DATA, SWOT_DATA } from './data';
 import { getSearchParam, setSearchParam } from './utils/search-params';
 
 const templates = getTemplates();
@@ -11,6 +11,7 @@ const DATA = {
   list: { label: '列表数据', value: LIST_DATA },
   hierarchy: { label: '层级数据', value: HIERARCHY_DATA },
   compare: { label: '对比数据', value: COMPARE_DATA },
+  swot: { label: 'SWOT 数据', value: SWOT_DATA },
 } as const;
 
 export const Preview = () => {

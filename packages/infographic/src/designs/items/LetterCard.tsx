@@ -1,0 +1,166 @@
+/** @jsxImportSource @antv/infographic-jsx */
+import { ComponentType, Defs, Group, Rect } from '@antv/infographic-jsx';
+import tinycolor from 'tinycolor2';
+import { ItemLabel } from '../components';
+import { getItemProps } from '../utils';
+import { registerItem } from './registry';
+import type { BaseItemProps } from './types';
+
+export interface LetterCardProps extends BaseItemProps {
+  showStripe?: boolean;
+  showGradient?: boolean;
+  showBottomShade?: boolean;
+}
+
+/**
+ * 字母卡片组件
+ * 用于显示大字母和标题
+ * 支持渐变背景、斜纹和底部阴影效果
+ */
+export const LetterCard: ComponentType<LetterCardProps> = (props) => {
+  const [
+    {
+      datum,
+      indexes,
+      width = 280,
+      height = 160,
+      showStripe = true,
+      showGradient = true,
+      showBottomShade = true,
+      themeColors,
+    },
+    restProps,
+  ] = getItemProps(props, ['showStripe', 'showGradient', 'showBottomShade']);
+
+  const displayLetter = datum.label?.[0].toUpperCase();
+  const displayTitle = datum.label?.toUpperCase();
+
+  const baseColor = themeColors.colorPrimary;
+  const base = tinycolor(baseColor);
+
+  const stripeWidth = 4;
+  const gapWidth = 6;
+  const rotationDeg = 45;
+  const bottomShadeHeight = 40;
+  const gradientLighten = 12;
+  const gradientDarken = 4;
+
+  const gradStart = base.clone().darken(gradientDarken).toHexString();
+  const gradEnd = base.clone().lighten(gradientLighten).toHexString();
+
+  const lightStripe = 'rgba(255, 255, 255, 0)';
+  const darkStripe = 'rgba(0, 0, 0, 0.03)';
+
+  const uniqueId = `letter-card-${indexes.join('-')}`;
+  const gradientId = `${uniqueId}-gradient`;
+  const patternId = `${uniqueId}-pattern`;
+  const shadeId = `${uniqueId}-shade`;
+  const tile = stripeWidth + gapWidth;
+
+  return (
+    <Group {...restProps}>
+      <Defs>
+        {showGradient && (
+          <linearGradient id={gradientId} x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stopColor={gradStart} />
+            <stop offset="100%" stopColor={gradEnd} />
+          </linearGradient>
+        )}
+
+        {showStripe && (
+          <pattern
+            id={patternId}
+            patternUnits="userSpaceOnUse"
+            width={tile}
+            height={tile}
+            patternTransform={`rotate(${rotationDeg})`}
+          >
+            <rect x="0" y="0" width={tile} height={tile} fill={lightStripe} />
+            <rect
+              x="0"
+              y="0"
+              width={stripeWidth}
+              height={tile}
+              fill={darkStripe}
+            />
+          </pattern>
+        )}
+
+        {showBottomShade && (
+          <linearGradient id={shadeId} x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stopColor="rgba(0,0,0,0)" />
+            <stop offset="100%" stopColor="rgba(0,0,0,0.16)" />
+          </linearGradient>
+        )}
+      </Defs>
+
+      <Rect
+        x={0}
+        y={0}
+        width={width}
+        height={height}
+        fill={showGradient ? `url(#${gradientId})` : baseColor}
+        rx={0}
+        ry={0}
+      />
+
+      {showStripe && (
+        <Rect
+          x={0}
+          y={0}
+          width={width}
+          height={height}
+          fill={`url(#${patternId})`}
+          rx={0}
+          ry={0}
+        />
+      )}
+
+      {showBottomShade && (
+        <Rect
+          x={0}
+          y={height - bottomShadeHeight}
+          width={width}
+          height={bottomShadeHeight}
+          fill={`url(#${shadeId})`}
+          rx={0}
+          ry={0}
+        />
+      )}
+
+      {displayLetter && (
+        <ItemLabel
+          indexes={indexes}
+          x={0}
+          y={16}
+          width={width}
+          fontSize={96}
+          fontWeight="bold"
+          fill="#FFFFFF"
+          alignHorizontal="center"
+          alignVertical="top"
+          lineHeight={1}
+        >
+          {displayLetter}
+        </ItemLabel>
+      )}
+
+      <ItemLabel
+        indexes={indexes}
+        x={0}
+        y={height - 40}
+        width={width}
+        fontSize={16}
+        fontWeight="bold"
+        fill="#FFFFFF"
+        alignHorizontal="center"
+        alignVertical="center"
+        lineHeight={1}
+      >
+        {displayTitle}
+      </ItemLabel>
+    </Group>
+  );
+};
+
+registerItem('letter-card', { component: LetterCard });

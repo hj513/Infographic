@@ -1,4 +1,5 @@
 export * from './BadgeCard';
+export * from './BulletText';
 export * from './CandyCardLite';
 export * from './ChartColumn';
 export * from './CircleNode';
@@ -7,6 +8,7 @@ export * from './CompactCard';
 export * from './DoneList';
 export * from './HorizontalIconArrow';
 export * from './IconBadge';
+export * from './LetterCard';
 export * from './PillBadge';
 export * from './PlainText';
 export * from './ProgressCard';

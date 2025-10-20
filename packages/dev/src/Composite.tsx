@@ -7,12 +7,13 @@ import {
 import { Button, Checkbox, ColorPicker, Flex, Form, Select } from 'antd';
 import { useCallback, useMemo } from 'react';
 import { Infographic } from './Infographic';
-import { COMPARE_DATA, HIERARCHY_DATA, LIST_DATA } from './data';
+import { COMPARE_DATA, HIERARCHY_DATA, LIST_DATA, SWOT_DATA } from './data';
 
 const DATA: { label: string; key: string; value: Data }[] = [
   { label: '列表数据', key: 'list', value: LIST_DATA },
   { label: '层级数据', key: 'hierarchy', value: HIERARCHY_DATA },
   { label: '对比数据', key: 'compare', value: COMPARE_DATA },
+  { label: 'SWOT数据', key: 'swot', value: SWOT_DATA },
 ];
 
 const items = getItems();
@@ -40,10 +41,10 @@ export const Composite = () => {
   const defaultValues = {
     structure: 'list-grid',
     item: 'circular-progress',
-    data: 'list',
+    data: 'swot',
     theme: 'light',
     colorPrimary: '#1890ff',
-    enablePalette: false,
+    enablePalette: true,
   };
 
   const initialValues = getStoredValues() || defaultValues;
