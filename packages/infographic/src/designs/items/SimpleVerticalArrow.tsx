@@ -22,10 +22,10 @@ export interface SimpleVerticalArrowProps extends BaseItemProps {
 export const SimpleVerticalArrow: ComponentType<SimpleVerticalArrowProps> = (
   props,
 ) => {
-  const [{ indexes, datum, height = 140, themeColors, flipped }, restProps] =
-    getItemProps(props, ['height', 'flipped']);
-
-  const positionH = indexes[0] % 2 === (flipped ? 0 : 1) ? 'normal' : 'flipped';
+  const [
+    { indexes, datum, height = 140, themeColors, positionH = 'normal' },
+    restProps,
+  ] = getItemProps(props, ['height']);
 
   const textAlignHorizontal = positionH === 'normal' ? 'right' : 'left';
   const label = (
@@ -140,4 +140,7 @@ const VerticalArrow = (
   );
 };
 
-registerItem('simple-vertical-arrow', { component: SimpleVerticalArrow });
+registerItem('simple-vertical-arrow', {
+  component: SimpleVerticalArrow,
+  composites: ['label', 'desc'],
+});

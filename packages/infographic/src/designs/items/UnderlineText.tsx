@@ -138,4 +138,7 @@ export const UnderlineText: ComponentType<UnderlineTextProps> = (props) => {
   );
 };
 
-registerItem('underline-text', { component: UnderlineText });
+registerItem('underline-text', {
+  component: UnderlineText,
+  composites: ['label', 'desc'],
+});

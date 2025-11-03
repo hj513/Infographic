@@ -119,4 +119,7 @@ export const IconBadge: ComponentType<IconBadgeProps> = (props) => {
   );
 };
 
-registerItem('icon-badge', { component: IconBadge });
+registerItem('icon-badge', {
+  component: IconBadge,
+  composites: ['icon', 'label'],
+});

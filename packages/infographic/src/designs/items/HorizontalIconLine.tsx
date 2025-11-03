@@ -146,4 +146,7 @@ export const HorizontalIconLine: ComponentType<HorizontalIconLineProps> = (
   );
 };
 
-registerItem('horizontal-icon-line', { component: HorizontalIconLine });
+registerItem('horizontal-icon-line', {
+  component: HorizontalIconLine,
+  composites: ['icon', 'label', 'desc'],
+});

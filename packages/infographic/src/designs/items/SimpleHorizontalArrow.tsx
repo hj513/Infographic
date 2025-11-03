@@ -24,16 +24,9 @@ export const SimpleHorizontalArrow: ComponentType<
   SimpleHorizontalArrowProps
 > = (props) => {
   const [
-    {
-      indexes,
-      datum,
-      width = 140,
-      themeColors,
-      flipped,
-      positionV = indexes[0] % 2 === (flipped ? 0 : 1) ? 'normal' : 'flipped',
-    },
+    { indexes, datum, width = 140, themeColors, positionV = 'normal' },
     restProps,
-  ] = getItemProps(props, ['width', 'flipped']);
+  ] = getItemProps(props, ['width']);
 
   const textAlignVertical = positionV === 'normal' ? 'bottom' : 'top';
   const label = (
@@ -147,4 +140,7 @@ const HorizontalArrow = (
   );
 };
 
-registerItem('simple-horizontal-arrow', { component: SimpleHorizontalArrow });
+registerItem('simple-horizontal-arrow', {
+  component: SimpleHorizontalArrow,
+  composites: ['label', 'desc'],
+});

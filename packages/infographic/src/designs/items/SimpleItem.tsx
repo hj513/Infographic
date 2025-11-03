@@ -213,4 +213,7 @@ export const SimpleItem: ComponentType<SimpleItemProps> = (props) => {
   }
 };
 
-registerItem('simple', { component: SimpleItem });
+registerItem('simple', {
+  component: SimpleItem,
+  composites: ['icon', 'label', 'desc'],
+});
